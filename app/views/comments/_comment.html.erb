@@ -1,0 +1,15 @@
+<%= div_for(comment) do %>
+  <div class="comments_wrapper">
+    <div>
+      <p class="lead"><%= comment.body%></p>
+      <p><small>Submitted<strong><%= time_ago_in_words(comment.created_at)%> ago
+      </strong><%= comment.user.email %></small></p>
+    </div>
+
+    <div>
+      <% if comment.user == current_user %>
+        <%= link_to 'Destroy', comment, method: :delete, data: {confirm: 'Are you sure?'}%>
+      <%end%>
+    </div>
+  </div>
+<% end %>
